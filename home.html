@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<style>
+    .background-section {
+        background: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80') no-repeat center center fixed;
+        background-size: cover;
+        text-align: center;
+        height: 90vh;
+        padding: 200px 0;
+        color: #fff;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    p {
+        font-weight: 300;
+    }
+
+    .input {
+        display: flex;
+        flex-direction: column;
+        background-color: #0D1117;
+        justify-content: center;
+        width: 400px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .value {
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        color: white;
+        display: flex;
+        position: relative;
+        gap: 5px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .value:not(:active):hover,
+    .value:focus {
+        background-color: #21262C;
+    }
+
+    .value:focus,
+    .value:active {
+        background-color: #1A1F24;
+        outline: none;
+    }
+
+    .value::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: -10px;
+        width: 5px;
+        height: 80%;
+        background-color: #2F81F7;
+        border-radius: 5px;
+        opacity: 0;
+    }
+
+    .value:focus::before,
+    .value:active::before {
+        opacity: 1;
+    }
+
+    .input:hover> :not(.value:hover) {
+        transition: 300ms;
+        filter: blur(1px);
+        transform: scale(0.95, 0.95);
+    }
+</style>
+
+<body class="bg-gray-100 font-sans min-h-screen" style="user-select: none;">
+    <header>
+        <nav class="py-4 fixed w-full z-50" style="background: rgba(255, 255, 255, .4);">
+            <div class="container mx-auto flex justify-around items-center">
+                <a class="text-black text-2xl font-bold" href="#">Navbar</a>
+                <ul class="flex space-x-4">
+                    <li><a class="text-black" href="home.html#home">Beranda</a></li>
+                    <li><a class="text-black" href="home.html#materi">Materi</a></li>
+                    <li><a class="text-black" href="home.html#bangun-datar">Bangun Datar</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="background-section">
+        <div class="container">
+            <h1 class="">Selamat datang di website Sederhana.
+            </h1>
+            <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, rerum sint? Modi, delectus. Maiores
+                tempora rerum quas in minima, esse nisi, expedita voluptatem odit quaerat recusandae quasi eligendi
+                tempore
+                illum temporibus repellendus dolore! Ducimus, quam odio assumenda aperiam praesentium facere.</p>
+        </div>
+    </section>
+
+    <section id="materi" class="py-16 container mx-auto text-center">
+        <h2 class="text-3xl font-bold">Materi</h2>
+        <div class="flex flex-wrap mt-8">
+            <div class="w-full md:w-1/3 p-4">
+                <div class="bg-white rounded-lg px-6 py-4 shadow-lg flex justify-center"
+                    style="min-height: 20rem; flex-direction: column;">
+                    <i class="fa fa-book text-5xl text-blue-500"></i>
+                    <h3 class="text-xl font-semibold mt-4">Basic Alert</h3>
+                    <p class="mt-2">Ini digunakan untuk menampilkan alert biasa.</p>
+                    <div class="mt-3">
+                        <button type="button" class="px-5 py-2 bg-green-500 hover:bg-green-800 text-white rounded"
+                            onclick="alert('Thank you for your click')">
+                            Click on Me
+                        </button>
+                        <button type="button" class="px-5 py-2 bg-red-500 hover:bg-red-800 text-white rounded"
+                            onmouseover="alert('Thank you for your hover')">
+                            Hover on Me
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/3 p-4">
+                <div class="bg-white rounded-lg px-6 py-4 shadow-lg flex justify-center"
+                    style="min-height: 20rem; flex-direction: column;">
+                    <input type="text" id="message" placeholder="Masukan Inputan..." class="p-2 border text-lg">
+                    <h3 class="text-xl font-semibold mt-4">Dynamic Alert</h3>
+                    <p class="mt-2">Ini digunakan untuk menampilkan alert sesuai dengan inputan yang kita
+                        masukan.</p>
+                    <div class="mt-3">
+                        <button type="button" class="px-5 py-2 bg-green-500 hover:bg-green-800 text-white rounded"
+                            onclick="showMessage()">
+                            Tampil
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/3 p-4">
+                <div class="bg-white rounded-lg px-6 py-4 shadow-lg flex justify-center"
+                    style="min-height: 20rem; flex-direction: column;">
+                    <div class="max-w-sm mx-auto">
+
+                        <div class="flex">
+                            <label for="panjang" class="block mb-2">Angka 1 : </label>
+                            <input type="number" id="panjang" class="border ml-2 mb-2" />
+                        </div>
+                        <div class="flex">
+                            <label for="lebar" class="block mb-2">Angka 2 : </label>
+                            <input type="number" id="lebar" class="border ml-2 mb-2" />
+                        </div>
+                        <div class="flex">
+                            <label for="lebar" class="block mb-2">Hasil : </label>
+                            <input type="text" id="hasil" class="border ml-8 mb-2" disabled />
+                        </div>
+
+                    </div>
+
+                    <h3 class="text-xl font-semibold mt-4">Kalkulator Sederhana</h3>
+                    <p class="mt-2">Ini digunakan untuk menghitung hasil dari perkalian dua bilangan.</p>
+                    <div class="mt-3">
+                        <button type="button" class="px-5 py-2 bg-green-500 hover:bg-green-800 text-white rounded"
+                            onclick="hasil()">
+                            Hasil
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bangun-datar" class="container mx-auto  py-16">
+        <h2 class="text-3xl font-bold text-center pb-16">Bangun Datar</h2>
+        <div class="flex justify-center gap-36">
+            <div style="max-width: 400px;">
+                <h2 class="text-2xl font-bold pb-3">Kalkulator Sederhana</h2>
+                <p class="font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consectetur similique, laboriosam
+                    neque sint rerum eveniet ullam numquam accusamus voluptatibus? Lorem, ipsum dolor.</p>
+            </div>
+            <div class="input">
+                <a href="persegi.html" class="value">
+                    Persegi
+                </a>
+                <a href="persegiPanjang.html" class="value">
+                    Persegi Panjang
+                </a>
+                <a href="segitiga.html" class="value">
+                    Segitiga
+                </a>
+                <a href="lingkaran.html" class="value">
+                    Lingkaran
+                </a>
+                <a href="jajargenjang.html" class="value">
+                    Jajargenjang
+                </a>
+            </div>
+        </div>
+    </section>
+    <script>
+        const showMessage = () => {
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value;
+
+            if (message.trim() === "") {
+                alert("Inputan tidak boleh kosong");
+            } else {
+                alert("Pesan: " + message);
+                messageInput.value = "";
+            }
+        }
+
+        const hasil = () => {
+            let panjang = parseFloat(document.getElementById("panjang").value);
+            let lebar = parseFloat(document.getElementById("lebar").value);
+
+            let hasil = panjang * lebar;
+            document.getElementById("hasil").value = hasil;
+        }
+    </script>
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Pandhu Arya. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
