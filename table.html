@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabel Siswa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <a href="home.html" style="text-decoration: none;"><i class="bi bi-arrow-left"></i> Back to home</a>
+        <table class="table border table-striped table-hover" id="tabel-siswa">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Jurusan</th>
+                    <th>Alamat</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pandhu Arya</td>
+                    <td>Rekayasa Perangkat Lunak</td>
+                    <td>Ponorogo</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-warning text-white" data-toggle="modal"
+                            data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Asfina Andini</td>
+                    <td>Teknik Komputer dan Jaringan</td>
+                    <td>Kepanjen</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-warning text-white" data-toggle="modal"
+                            data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dharma Wangsa</td>
+                    <td>Management Bisnis</td>
+                    <td>Bogor</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-warning text-white" data-toggle="modal"
+                            data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal"
+            onclick="Tambah()">
+            Tambah
+        </button>
+    </div>
+
+
+    <!-- modal -->
+    <div class="modal" id="modal">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Form Modal</h4>
+                    <span class="close" data-dismiss="modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="nama" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Jurusan</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="jurusan" name="jurusan">
+                                <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                                <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
+                                <option value="Management Bisnis">Management Bisnis</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="alamat" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-success" data-dismiss="modal" onclick="Simpan();">
+                        Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let edit = false;
+        let indeks = 0;
+
+        const Tambah = () => {
+            edit = false;
+            //mengosongkan form
+            document.getElementById('nama').value = "";
+            document.getElementById('jurusan').value = "";
+            document.getElementById('alamat').value = "";
+        }
+        const Edit = (index) => {
+            edit = true;
+            indeks = index;
+            let table = document.getElementById('tabel-siswa');
+            // mengambil data dari  tabel
+            let nama = table.rows[index].cells[0].innerHTML;
+            let jurusan = table.rows[index].cells[1].innerHTML;
+            let alamat = table.rows[index].cells[2].innerHTML;
+
+            //memasukkan data ke form
+            document.getElementById('nama').value = nama;
+            document.getElementById('jurusan').value = jurusan;
+            document.getElementById('alamat').value = alamat;
+        }
+
+        const Simpan = () => {
+            let table = document.getElementById('tabel-siswa');
+            //menampuang data dari form
+            let nama = document.getElementById('nama').value;
+            let jurusan = document.getElementById('jurusan').value;
+            let alamat = document.getElementById('alamat').value;
+
+            // jika aksinya edit
+            if (edit) {
+                table.rows[indeks].cells[0].innerHTML = nama;
+                table.rows[indeks].cells[1].innerHTML = jurusan;
+                table.rows[indeks].cells[2].innerHTML = alamat;
+                //jika aksinya tambah
+            } else {
+                const newRow = document.createElement("tr");
+
+                newRow.innerHTML = `
+                <td>${nama}</td>
+                <td>${jurusan}</td>
+                <td>${alamat}</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">Edit</button>
+                    <button type="button" class="btn btn-sm btn-danger" onclick="Hapus(this.parentElement.parentElement.rowIndex)">Hapus</button>
+                </td>`;
+
+                table.appendChild(newRow);
+
+            }
+        }
+        const Hapus = (index) => {
+            let tabel = document.getElementById('tabel-siswa');
+            tabel.deleteRow(index);
+        }
+    </script>
+</body>
+
+</html>
