@@ -84,27 +84,60 @@
         filter: blur(1px);
         transform: scale(0.95, 0.95);
     }
+
+    @media (max-width: 567px) {
+        .input {
+            width: auto;
+            padding: 10px;
+        }
+    }
 </style>
 
 <body class="bg-gray-100 font-sans min-h-screen" style="user-select: none;">
     <header>
-        <nav class="py-4 fixed w-full z-50" style="background: rgba(255, 255, 255, .4);">
-            <div class="container mx-auto flex justify-around items-center">
-                <a class="text-black text-2xl font-bold" href="#">Navbar</a>
-                <ul class="flex space-x-4">
-                    <li><a class="text-black" href="home.html#home">Beranda</a></li>
-                    <li><a class="text-black" href="home.html#materi">Materi</a></li>
-                    <li><a class="text-black" href="home.html#bangun-datar">Bangun Datar</a></li>
-                </ul>
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-10">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="home.html" class="flex items-center">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pandhu</span>
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul
+                        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <a href="home.html#home"
+                                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Beranda</a>
+                        </li>
+                        <li>
+                            <a href="home.html#materi"
+                                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Materi</a>
+                        </li>
+                        <li>
+                            <a href="home.html#bangun-datar"
+                                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Bangun
+                                Datar</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
 
     <section class="background-section">
         <div class="container">
-            <h1 class="">Selamat datang di website Sederhana.
+            <h1 class=" text-xl sm:text-5xl mb-2">Selamat datang di website Sederhana.
             </h1>
-            <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, rerum sint? Modi, delectus. Maiores
+            <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, rerum sint? Modi,
+                delectus. Maiores
                 tempora rerum quas in minima, esse nisi, expedita voluptatem odit quaerat recusandae quasi eligendi
                 tempore
                 illum temporibus repellendus dolore! Ducimus, quam odio assumenda aperiam praesentium facere.</p>
@@ -184,13 +217,14 @@
 
     <section id="bangun-datar" class="container mx-auto  py-16">
         <h2 class="text-3xl font-bold text-center pb-16">Bangun Datar</h2>
-        <div class="flex justify-center gap-36">
+        <div class="sm:flex justify-center m-10 sm:gap-36">
             <div style="max-width: 400px;">
                 <h2 class="text-2xl font-bold pb-3">Kalkulator Sederhana</h2>
-                <p class="font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consectetur similique, laboriosam
+                <p class="font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consectetur
+                    similique, laboriosam
                     neque sint rerum eveniet ullam numquam accusamus voluptatibus? Lorem, ipsum dolor.</p>
             </div>
-            <div class="input">
+            <div class="input mt-3">
                 <a href="persegi.html" class="value">
                     Persegi
                 </a>
