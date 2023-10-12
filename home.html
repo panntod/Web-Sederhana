@@ -102,7 +102,7 @@
                 </a>
                 <button data-collapse-toggle="navbar-default" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-default" aria-expanded="false">
+                    aria-controls="navbar-default" aria-expanded="false" onclick="showNav()">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 17 14">
@@ -154,7 +154,7 @@
                     <h3 class="text-xl font-semibold mt-4">Basic Alert</h3>
                     <p class="mt-2">Ini digunakan untuk menampilkan alert biasa.</p>
                     <div class="mt-3">
-                        <button type="button" class="px-5 py-2 bg-green-500 hover:bg-green-800 text-white rounded"
+                        <button type="button" class="px-5 py-2 bg-green-500 hover:bg-green-800 text-white rounded mb-2"
                             onclick="alert('Thank you for your click')">
                             Click on Me
                         </button>
@@ -189,15 +189,15 @@
 
                         <div class="flex">
                             <label for="panjang" class="block mb-2">Angka 1 : </label>
-                            <input type="number" id="panjang" class="border ml-2 mb-2" />
+                            <input type="number" id="panjang" class="border pl-2 ml-2 mb-2" />
                         </div>
                         <div class="flex">
                             <label for="lebar" class="block mb-2">Angka 2 : </label>
-                            <input type="number" id="lebar" class="border ml-2 mb-2" />
+                            <input type="number" id="lebar" class="border pl-2 ml-2 mb-2" />
                         </div>
                         <div class="flex">
                             <label for="lebar" class="block mb-2">Hasil : </label>
-                            <input type="text" id="hasil" class="border ml-8 mb-2" disabled />
+                            <input type="text" id="hasil" class="border pl-2 ml-8 mb-2" disabled />
                         </div>
 
                     </div>
@@ -263,6 +263,17 @@
             let hasil = panjang * lebar;
             document.getElementById("hasil").value = hasil;
         }
+
+        function showNav() {
+            const navbar = document.getElementById("navbar-default");
+            if (navbar.style.display === "none" || navbar.style.display === "") {
+                navbar.style.display = "block";
+            } else {
+                navbar.style.display = "none";
+            }
+        }
+
+
     </script>
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto text-center">
