@@ -112,6 +112,11 @@
             const alas = parseFloat(document.getElementById("alas").value);
             const tinggi = parseFloat(document.getElementById("tinggi").value);
 
+            if (!tinggi || !alas) {
+                alert("Masukkan semua nilai alas dan tinggi terlebih dahulu.");
+                return;
+            }
+
             const hasil = 0.5 * alas * tinggi;
             document.getElementById("hasilLuas").value = hasil;
             alert(`Anda memilih luas segitiga. Hasilnya = ${hasil}`);
