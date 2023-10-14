@@ -58,7 +58,11 @@ const ChangeBackground = (color) => {
   // mengosongkan class pada elemen yang diambil
   element.className = "";
   // memberikan class tipe alert berdasarkan parameter
-  element.classList.add(color, "text-white", "rounded");
+  if (color === 'bg-blend-soft-light') {
+    element.classList.add(color, "text-black", "rounded", "border");
+  }else{
+    element.classList.add(color, "text-white", "rounded");
+  }
 };
 
 setInterval(() => {
