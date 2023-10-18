@@ -83,7 +83,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Form Modal</h4>
-                    <span class="close" data-dismiss="modal">&times;</span>
+                    <btn class="close btn" onclick="hideModal()">&times;</btn>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -126,60 +126,80 @@
 
         const Tambah = () => {
             edit = false;
-            //mengosongkan form
+            indeks = 0; // Reset indeks
+            // Mengosongkan form
             document.getElementById('nama').value = "";
             document.getElementById('jurusan').value = "";
             document.getElementById('alamat').value = "";
+            $('#modal').modal('show'); // Memunculkan modal dengan jQuery
         }
+
         const Edit = (index) => {
             edit = true;
             indeks = index;
             let table = document.getElementById('tabel-siswa');
-            // mengambil data dari  tabel
+            // Mengambil data dari tabel
             let nama = table.rows[index].cells[0].innerHTML;
             let jurusan = table.rows[index].cells[1].innerHTML;
             let alamat = table.rows[index].cells[2].innerHTML;
 
-            //memasukkan data ke form
+            // Memasukkan data ke form
             document.getElementById('nama').value = nama;
             document.getElementById('jurusan').value = jurusan;
             document.getElementById('alamat').value = alamat;
+
+            // Memunculkan modal
+            $('#modal').modal('show'); // Memunculkan modal dengan jQuery
         }
 
         const Simpan = () => {
             let table = document.getElementById('tabel-siswa');
-            //menampuang data dari form
+            // Menampung data dari form
             let nama = document.getElementById('nama').value;
             let jurusan = document.getElementById('jurusan').value;
             let alamat = document.getElementById('alamat').value;
 
-            // jika aksinya edit
+            // Jika aksinya adalah edit
             if (edit) {
                 table.rows[indeks].cells[0].innerHTML = nama;
                 table.rows[indeks].cells[1].innerHTML = jurusan;
                 table.rows[indeks].cells[2].innerHTML = alamat;
-                //jika aksinya tambah
-            } else {
+            }
+            // Jika aksinya adalah tambah
+            else {
                 const newRow = document.createElement("tr");
 
                 newRow.innerHTML = `
-                <td>${nama}</td>
-                <td>${jurusan}</td>
-                <td>${alamat}</td>
-                <td>
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">Edit</button>
-                    <button type="button" class="btn btn-sm btn-danger" onclick="Hapus(this.parentElement.parentElement.rowIndex)">Hapus</button>
-                </td>`;
+                    <td>${nama}</td>
+                    <td>${jurusan}</td>
+                    <td>${alamat}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-warning text-white" data-toggle="modal"
+                            data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>`;
 
                 table.appendChild(newRow);
-
             }
+
+            $('#modal').modal('hide'); 
         }
+
         const Hapus = (index) => {
             let tabel = document.getElementById('tabel-siswa');
             tabel.deleteRow(index);
         }
+        const hideModal = () => {
+            $('#modal').modal('hide'); 
+        }
     </script>
+
+
 </body>
 
 </html>
