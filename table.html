@@ -33,7 +33,7 @@
                             <i class="bi bi-pencil-square"></i>
                         </button>
                         <button type="button" class="btn btn-sm btn-danger"
-                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            onclick="HapusBaris(this.parentElement.parentElement.rowIndex)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -48,7 +48,7 @@
                             <i class="bi bi-pencil-square"></i>
                         </button>
                         <button type="button" class="btn btn-sm btn-danger"
-                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            onclick="HapusBaris(this.parentElement.parentElement.rowIndex)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -63,7 +63,7 @@
                             <i class="bi bi-pencil-square"></i>
                         </button>
                         <button type="button" class="btn btn-sm btn-danger"
-                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                            onclick="HapusBaris(this.parentElement.parentElement.rowIndex)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -167,27 +167,25 @@
             }
             // Jika aksinya adalah tambah
             else {
-                const newRow = document.createElement("tr");
+                const newRow = table.insertRow(-1); // Menambahkan baris baru ke tabel
 
                 newRow.innerHTML = `
                     <td>${nama}</td>
                     <td>${jurusan}</td>
                     <td>${alamat}</td>
                     <td>
-                        <button type="button" class="btn btn-sm btn-warning text-white" data-toggle="modal"
-                            data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">
+                        <button type="button" class="btn btn-sm btn-warning text-white" data-toggle="modal" data-target="#modal" onclick="Edit(this.parentElement.parentElement.rowIndex)">
                             <i class="bi bi-pencil-square"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-danger"
-                            onclick="Hapus(this.parentElement.parentElement.rowIndex)">
+                        <button type="button" class="btn btn-sm btn-danger" onclick="HapusBaris(this.parentElement.parentElement.rowIndex)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>`;
-
-                table.appendChild(newRow);
             }
 
-            $('#modal').modal('hide'); 
+
+
+            $('#modal').modal('hide');
         }
 
         const Hapus = (index) => {
@@ -195,8 +193,22 @@
             tabel.deleteRow(index);
         }
         const hideModal = () => {
-            $('#modal').modal('hide'); 
+            $('#modal').modal('hide');
         }
+
+        function KonfirmasiHapus() {
+            return confirm('Apakah kamu ingin menghapus data ini?');
+        }
+
+        function HapusBaris(rowIndex) {
+            if (KonfirmasiHapus()) {
+                let tabel = document.getElementById('tabel-siswa');
+                tabel.deleteRow(rowIndex);
+            }else{
+                alert('Gagal Menghapus Siswa')
+            }
+        }
+
     </script>
 
 
