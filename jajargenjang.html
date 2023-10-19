@@ -61,7 +61,7 @@
             </div>
             <div class="mb-4 flex justify-center items-center">
                 <label for="lebar" class="text-lg font-semibold mr-2">Sisi</label>
-                <input type="number" id="keliling"
+                <input type="number" id="sisi"
                     class="border p-2 rounded focus:ring focus:ring-blue-300 focus:outline-none ml-5" />
             </div>
             <div class="mb-4 flex justify-center items-center">
@@ -112,9 +112,9 @@
         }
 
         function hitungKeliling() {
-            const alas = parseFloat(document.getElementById("alas").value);
+            const panjang = parseFloat(document.getElementById("panjang").value);
             const sisi = parseFloat(document.getElementById("sisi").value);
-            const keliling = 2 * (alas + sisi);
+            const keliling = (panjang + sisi) * 2;
 
             document.getElementById("hasilKeliling").value = keliling;
             alert(`Anda memilih luas jajargenjang. Hasilnya = ${keliling}`);
