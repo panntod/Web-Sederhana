@@ -11,10 +11,10 @@ const showMessage = () => {
 };
 
 const hasil = () => {
-  let panjang = parseFloat(document.getElementById("angka1").value);
-  let lebar = parseFloat(document.getElementById("angka2").value);
+  let angka1 = parseFloat(document.getElementById("angka1").value);
+  let angka2 = parseFloat(document.getElementById("angka2").value);
 
-  let hasil = panjang * lebar;
+  let hasil = angka1 * angka2;
   document.getElementById("hasil").value = hasil;
 };
 
@@ -64,32 +64,22 @@ const ChangeBackground = (color) => {
     element.classList.add(color, "text-white", "rounded");
   }
 };
-
 const box = document.getElementById("box-color");
 const merah = document.getElementById("merah");
 const hijau = document.getElementById("hijau");
 const biru = document.getElementById("biru");
 
-merah.addEventListener("input", function () {
+function updateBackgroundColor() {
   const r = merah.value;
   const g = hijau.value;
   const b = biru.value;
   box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-});
+}
 
-hijau.addEventListener("input", function () {
-  const r = merah.value;
-  const g = hijau.value;
-  const b = biru.value;
-  box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-});
+merah.addEventListener("input", updateBackgroundColor);
+hijau.addEventListener("input", updateBackgroundColor);
+biru.addEventListener("input", updateBackgroundColor);
 
-biru.addEventListener("input", function () {
-  const r = merah.value;
-  const g = hijau.value;
-  const b = biru.value;
-  box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-});
 
 setInterval(() => {
   const waktu = new Date();
