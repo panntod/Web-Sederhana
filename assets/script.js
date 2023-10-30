@@ -58,12 +58,38 @@ const ChangeBackground = (color) => {
   // mengosongkan class pada elemen yang diambil
   element.className = "";
   // memberikan class tipe alert berdasarkan parameter
-  if (color === 'bg-blend-soft-light') {
+  if (color === "bg-blend-soft-light") {
     element.classList.add(color, "text-black", "rounded", "border");
-  }else{
+  } else {
     element.classList.add(color, "text-white", "rounded");
   }
 };
+
+const box = document.getElementById("box-color");
+const merah = document.getElementById("merah");
+const hijau = document.getElementById("hijau");
+const biru = document.getElementById("biru");
+
+merah.addEventListener("input", function () {
+  const r = merah.value;
+  const g = hijau.value;
+  const b = biru.value;
+  box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+});
+
+hijau.addEventListener("input", function () {
+  const r = merah.value;
+  const g = hijau.value;
+  const b = biru.value;
+  box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+});
+
+biru.addEventListener("input", function () {
+  const r = merah.value;
+  const g = hijau.value;
+  const b = biru.value;
+  box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+});
 
 setInterval(() => {
   const waktu = new Date();
