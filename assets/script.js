@@ -1,3 +1,4 @@
+// menampilkan message alert
 const showMessage = () => {
   const messageInput = document.getElementById("message");
   const message = messageInput.value;
@@ -10,6 +11,7 @@ const showMessage = () => {
   }
 };
 
+// menghitung menggunakan javasccript
 const hasil = () => {
   let angka1 = parseFloat(document.getElementById("angka1").value);
   let angka2 = parseFloat(document.getElementById("angka2").value);
@@ -18,6 +20,7 @@ const hasil = () => {
   document.getElementById("hasil").value = hasil;
 };
 
+// menampilkan navbar
 function showNav() {
   const navbar = document.getElementById("navbar-default");
   if (navbar.style.display === "none" || navbar.style.display === "") {
@@ -27,6 +30,7 @@ function showNav() {
   }
 }
 
+// menampilkan customize panjang, lebar dan warna
 const EditStyle = () => {
   // Mengambil nilai dari elemen
   let panjangInput = document.getElementById("panjang");
@@ -53,6 +57,7 @@ const EditStyle = () => {
   document.getElementById("square").style.backgroundColor = warna;
 };
 
+// untuk mengganti bg color menggunakan option
 const ChangeBackground = (color) => {
   let element = document.getElementById("pesan");
   // mengosongkan class pada elemen yang diambil
@@ -64,6 +69,8 @@ const ChangeBackground = (color) => {
     element.classList.add(color, "text-white", "rounded");
   }
 };
+
+// untuk mengganti warna menggunakan color slider
 const box = document.getElementById("box-color");
 const merah = document.getElementById("merah");
 const hijau = document.getElementById("hijau");
@@ -80,7 +87,7 @@ merah.addEventListener("input", updateBackgroundColor);
 hijau.addEventListener("input", updateBackgroundColor);
 biru.addEventListener("input", updateBackgroundColor);
 
-
+// untuk menampilkan jam digital sesuai dengan waktu yang ada
 setInterval(() => {
   const waktu = new Date();
   const jam = waktu.getHours();
@@ -88,3 +95,44 @@ setInterval(() => {
   const detik = waktu.getSeconds();
   document.getElementById("jam").innerHTML = jam + ":" + menit + ":" + detik;
 }, 1000);
+
+// untuk bermain game suit
+const winner = document.getElementById("winner");
+const gunting = document.getElementById("gunting");
+const batu = document.getElementById("batu");
+const kertas = document.getElementById("kertas");
+const imgComputer = document.getElementById("computer")
+const imgPlayer = document.getElementById("player")
+
+function pilihanComputer() {
+  let comp = Math.random();
+
+  if (comp < 0.34) return "gunting";
+  if (comp >= 0.34 && comp < 0.67) return "kertas";
+  return "batu";
+}
+
+function hasil(comp, player) {
+  if (player == comp) return "SERI!";
+  if (player == "gunting") return comp == "kertas" ? "MENANG!" : "KALAH!";
+  if (player == "kertas") return comp == "batu" ? "MENANG!" : "KALAH!";
+  if (player == "batu") return comp == "gunting" ? "MENANG" : "KALAH!";
+  return "Pilihan tidak diketahui"
+}
+
+const gambar = ['kertas', 'batu', 'gunting']
+
+function game(pilihanPlayer) {
+    const getPilihanComputer = pilihanComputer()
+    const getPilihanPlayer = pilihanPlayer
+    const getHasil = hasil(getPilihanComputer, getPilihanPlayer) 
+
+    imgComputer.setAttribute('src',`img/${getPilihanComputer}.png`)
+    imgPlayer.setAttribute('src',`img/${getPilihanPlayer}.png`)
+    winner.innerHTML = getHasil
+}
+
+gunting.addEventListener('click',() => game('gunting'))
+batu.addEventListener('click',() => game('batu'))
+kertas.addEventListener('click',() => game('kertas'))
+
