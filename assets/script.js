@@ -112,7 +112,7 @@ function pilihanComputer() {
   return "batu";
 }
 
-function hasil(comp, player) {
+function result(comp, player) {
   if (player == comp) return "SERI!";
   if (player == "gunting") return comp == "kertas" ? "MENANG!" : "KALAH!";
   if (player == "kertas") return comp == "batu" ? "MENANG!" : "KALAH!";
@@ -125,10 +125,10 @@ const gambar = ['kertas', 'batu', 'gunting']
 function game(pilihanPlayer) {
     const getPilihanComputer = pilihanComputer()
     const getPilihanPlayer = pilihanPlayer
-    const getHasil = hasil(getPilihanComputer, getPilihanPlayer) 
+    const getHasil = result(getPilihanComputer, getPilihanPlayer) 
 
-    imgComputer.setAttribute('src',`img/${getPilihanComputer}.png`)
-    imgPlayer.setAttribute('src',`img/${getPilihanPlayer}.png`)
+    imgComputer.setAttribute('src',`assets/img/${getPilihanComputer}.png`)
+    imgPlayer.setAttribute('src',`assets/img/${getPilihanPlayer}.png`)
     winner.innerHTML = getHasil
 }
 
